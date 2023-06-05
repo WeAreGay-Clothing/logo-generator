@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeAreGay Logo Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <canvas id="preview"></canvas>
+        <div id="controls">
+            <!-- color picker for background -->
+            <label for="background-color">Background Color</label>
+            <input type="color" id="background-color" value="#000000">
+            <!-- color picker for text -->
+            <label for="text-color">Text Color</label>
+            <input type="color" id="text-color" value="#ffffff">
+            <!-- size picker -->
+            <!-- 128x, 256x, 512x, 1024x, 2048x -->
+            <label for="size">Size</label>
+            <select name="size" id="size">
+                <option value="32">32x</option>
+                <option value="64">64x</option>
+                <option value="128">128x</option>
+                <option value="256">256x</option>
+                <option value="512" selected>512x</option>
+            </select>
+            <!-- transparency -->
+            <label for="transparent">Transparent</label>
+            <input type="checkbox" id="transparent">
+            <button id="download">Download</button>
+        </div>
+    </main>
+    <script src="index.js"></script>
+</body>
+
+</html>
