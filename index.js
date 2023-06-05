@@ -8,16 +8,20 @@ const transparent = document.getElementById('transparent');
 
 // set the canvas width and height
 canvas.width = canvas.height = 512;
-size.onchange = function() {
-    canvas.width = canvas.height = this.value;
-    draw();
-}
 
+size.onchange = draw;
 textColor.onchange = draw;
 backgroundColor.onchange = draw;
 transparent.onchange = draw;
+window.onresize = draw;
 
-function draw() {
+function draw(e, force = false) {
+    // set canvas size to match input or if its too big for the screen, set it to the screen width or height
+    const newSize = Math.min(size.value, Math.min(window.innerWidth, window.innerHeight));
+    canvas.width = canvas.height = newSize;
+    if (force) {
+        canvas.width = canvas.height = size.value;
+    }
     // draw the background color
     ctx.fillStyle = backgroundColor.value;
     if (!transparent.checked) {
@@ -41,9 +45,11 @@ function draw() {
 draw();
 
 download.onclick = function() {
+    draw(null, true);
     const a = document.createElement('a');
     a.href = canvas.toDataURL();
-    a.download = 'image.png';
+    a.download = 'logo.png';
     a.click();
     delete a;
+    draw();
 }
